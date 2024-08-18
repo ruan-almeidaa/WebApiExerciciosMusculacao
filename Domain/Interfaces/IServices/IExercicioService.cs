@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.IServices
 {
-    internal interface IExercicioService
+    public interface IExercicioService
     {
         Task<List<Exercicio>> BuscarTodos();
         Task Criar(Exercicio exercicio);
