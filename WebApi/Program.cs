@@ -18,9 +18,6 @@ builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<ExercicioValidation>();
 
-// Configuração do FluentValidation para os validadores
-builder.Services.AddValidatorsFromAssemblyContaining<Program>(); // Substitua com a assembly que contém seus validadores
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,8 +31,8 @@ builder.Services.AddDbContext<BancoContext>(options =>
     }));
 
 //Injeção de dependência
-builder.Services.AddSingleton<IExercicioRepository, ExercicioRepository>();
-builder.Services.AddSingleton<IExercicioService, ExercicioService>();
+builder.Services.AddScoped<IExercicioRepository, ExercicioRepository>();
+builder.Services.AddScoped<IExercicioService, ExercicioService>();
 
 var app = builder.Build();
 
