@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Enums.Exercicio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace Entities.Entities
     {
         public int Id { get; set; }
         public required string Nome { get; set; }
-        public required string Musculo { get; set; }
+        public required ExercicioGrupoMuscularEnum GrupoMuscular { get; set; }
     }
 }
