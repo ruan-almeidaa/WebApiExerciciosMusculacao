@@ -7,6 +7,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class ExercicioController : ControllerBase
     {
         private readonly IExercicioService _exercicioService;
@@ -30,6 +31,52 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
             }
            
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Criar(Exercicio exercicio)
+        {
+            try
+            {
+                
+                await _exercicioService.Criar(exercicio);
+                return Ok(exercicio);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Editar(Exercicio exercicio)
+        {
+            try
+            {
+                await _exercicioService.Editar(exercicio);
+                return Ok(exercicio);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
+            }
+        }
+
+        [HttpDelete]
+        public async Task<object> Excluir(Exercicio exercicio)
+        {
+            try
+            {
+                await _exercicioService.Excluir(exercicio);
+                return true;
+            }
+            catch (Exception ex) 
+            {
+
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
+            }
         }
     }
 }
