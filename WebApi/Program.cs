@@ -1,14 +1,26 @@
 using Domain.Interfaces.IRepositories;
 using Domain.Interfaces.IServices;
 using Domain.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Helpers.Validation;
 using Infra.Database;
 using Infra.Repositories;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//Fluent validation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<ExercicioValidation>();
+
+// Configuração do FluentValidation para os validadores
+builder.Services.AddValidatorsFromAssemblyContaining<Program>(); // Substitua com a assembly que contém seus validadores
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
