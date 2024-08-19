@@ -3,6 +3,7 @@ using Domain.Interfaces.IServices;
 using Domain.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Helpers.Automapper;
 using Helpers.Validation;
 using Infra.Database;
 using Infra.Repositories;
@@ -17,6 +18,9 @@ builder.Services.AddControllers();
 //Fluent validation
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<ExercicioValidation>();
+
+// Adiciona AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

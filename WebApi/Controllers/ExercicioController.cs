@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.IServices;
+﻿using Domain.Dtos;
+using Domain.Interfaces.IServices;
 using Entities.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,11 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("buscarTodos")]
-        public async Task<ActionResult<List<Exercicio>>> BuscarTodos()
+        public async Task<ActionResult<List<ExercicioDTO>>> BuscarTodos()
         {
             try
             {
-                List<Exercicio> exercicios = await _exercicioService.BuscarTodos();
+                List<ExercicioDTO> exercicios = await _exercicioService.BuscarTodos();
                 return Ok(exercicios);
             }
             catch (Exception ex)

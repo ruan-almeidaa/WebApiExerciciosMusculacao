@@ -1,4 +1,5 @@
-﻿using Entities.Entities;
+﻿using Domain.Dtos;
+using Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Domain.Interfaces.IServices
 {
     public interface IExercicioService
     {
-        Task<List<Exercicio>> BuscarTodos();
+        Task<List<ExercicioDTO>> BuscarTodos();
         Task Criar(Exercicio exercicio);
         Task Editar(Exercicio exercicio);
         Task Excluir(Exercicio exercicio);
