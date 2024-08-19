@@ -50,13 +50,14 @@ namespace Infra.Repositories
             }
         }
 
-        public async Task Editar(Exercicio exercicio)
+        public async Task<Exercicio> Editar(Exercicio exercicio)
         {
             try
             {
                 _bancoContext.ChangeTracker.Clear();
                 _bancoContext.Exercicios.Update(exercicio);
                 await _bancoContext.SaveChangesAsync();
+                return exercicio;
 
             }
             catch (Exception)

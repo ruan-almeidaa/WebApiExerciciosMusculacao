@@ -11,7 +11,7 @@ namespace Domain.Interfaces.IRepositories
     {
         Task<List<Exercicio>> BuscarTodos();
         Task<Exercicio> Criar(Exercicio exercicio);
-        Task Editar(Exercicio exercicio);
+        Task<Exercicio> Editar(Exercicio exercicio);
         Task Excluir (Exercicio exercicio);
     }
 }

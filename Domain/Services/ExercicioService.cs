@@ -45,8 +45,7 @@ namespace Domain.Services
             try
             {
                 Exercicio exercicioCriado = await _exercicioRepository.Criar(exercicio);
-                ExercicioDTO exercicioDto = _mapper.Map<ExercicioDTO>(exercicioCriado);
-                return exercicioDto;
+                return _mapper.Map<ExercicioDTO>(exercicioCriado);
             }
             catch (Exception)
             {
@@ -55,11 +54,12 @@ namespace Domain.Services
             }
         }
 
-        public async Task Editar(Exercicio exercicio)
+        public async Task<ExercicioDTO> Editar(Exercicio exercicio)
         {
             try
             {
-                await _exercicioRepository.Editar(exercicio);
+                Exercicio exercicioEditado =  await _exercicioRepository.Editar(exercicio);
+                return _mapper.Map<ExercicioDTO>(exercicioEditado);
             }
             catch (Exception)
             {

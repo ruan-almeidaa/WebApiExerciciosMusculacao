@@ -12,7 +12,7 @@ namespace Domain.Interfaces.IServices
     {
         Task<List<ExercicioDTO>> BuscarTodos();
         Task<ExercicioDTO> Criar(Exercicio exercicio);
-        Task Editar(Exercicio exercicio);
+        Task<ExercicioDTO> Editar(Exercicio exercicio);
         Task Excluir(Exercicio exercicio);
     }
 }

@@ -23,9 +23,8 @@ namespace WebApi.Controllers
         public async Task<ActionResult<List<ExercicioDTO>>> BuscarTodos()
         {
             try
-            {
-                List<ExercicioDTO> exercicios = await _exercicioService.BuscarTodos();
-                return Ok(exercicios);
+            {;
+                return Ok(await _exercicioService.BuscarTodos());
             }
             catch (Exception ex)
             {
@@ -35,13 +34,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Criar(Exercicio exercicio)
+        public async Task<ActionResult<ExercicioDTO>> Criar(Exercicio exercicio)
         {
             try
             {
-                
-                ExercicioDTO exercicioCriado = await _exercicioService.Criar(exercicio);
-                return Ok(exercicioCriado);
+                return Ok(await _exercicioService.Criar(exercicio));
             }
             catch (Exception ex)
             {
@@ -51,12 +48,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Editar(Exercicio exercicio)
+        public async Task<ActionResult<ExercicioDTO>> Editar(Exercicio exercicio)
         {
             try
             {
-                await _exercicioService.Editar(exercicio);
-                return Ok(exercicio);
+                return Ok(await _exercicioService.Editar(exercicio));
             }
             catch (Exception ex)
             {
