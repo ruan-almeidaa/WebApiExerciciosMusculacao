@@ -11,7 +11,7 @@ namespace Domain.Interfaces.IServices
     public interface IExercicioService
     {
         Task<List<ExercicioDTO>> BuscarTodos();
-        Task Criar(Exercicio exercicio);
+        Task<ExercicioDTO> Criar(Exercicio exercicio);
         Task Editar(Exercicio exercicio);
         Task Excluir(Exercicio exercicio);
     }

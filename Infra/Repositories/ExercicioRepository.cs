@@ -32,12 +32,16 @@ namespace Infra.Repositories
             }
         }
 
-        public async Task Criar(Exercicio exercicio)
+        public async Task<Exercicio> Criar(Exercicio exercicio)
         {
             try
             {
+                // Adiciona a entidade ao contexto
                 await _bancoContext.Exercicios.AddAsync(exercicio);
+                // Salva as mudanças no banco de dados
                 await _bancoContext.SaveChangesAsync();
+                // Retorna a entidade criada
+                return exercicio;
             }
             catch (Exception)
             {

@@ -40,11 +40,13 @@ namespace Domain.Services
             }
         }
 
-        public async Task Criar(Exercicio exercicio)
+        public async Task<ExercicioDTO> Criar(Exercicio exercicio)
         {
             try
             {
-               await _exercicioRepository.Criar(exercicio);
+                Exercicio exercicioCriado = await _exercicioRepository.Criar(exercicio);
+                ExercicioDTO exercicioDto = _mapper.Map<ExercicioDTO>(exercicioCriado);
+                return exercicioDto;
             }
             catch (Exception)
             {

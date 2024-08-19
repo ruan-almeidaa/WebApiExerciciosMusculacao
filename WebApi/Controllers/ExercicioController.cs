@@ -40,8 +40,8 @@ namespace WebApi.Controllers
             try
             {
                 
-                await _exercicioService.Criar(exercicio);
-                return Ok(exercicio);
+                ExercicioDTO exercicioCriado = await _exercicioService.Criar(exercicio);
+                return Ok(exercicioCriado);
             }
             catch (Exception ex)
             {

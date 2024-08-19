@@ -10,7 +10,7 @@ namespace Domain.Interfaces.IRepositories
     public interface IExercicioRepository
     {
         Task<List<Exercicio>> BuscarTodos();
-        Task Criar(Exercicio exercicio);
+        Task<Exercicio> Criar(Exercicio exercicio);
         Task Editar(Exercicio exercicio);
         Task Excluir (Exercicio exercicio);
     }
