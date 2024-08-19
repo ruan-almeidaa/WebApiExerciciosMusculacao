@@ -1,4 +1,6 @@
 ﻿using Entities.Entities;
+using Entities.Enums.Exercicio;
+using Entities.Enums.Uteis;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,10 @@ namespace Helpers.Validation
             RuleFor(e => e.GrupoMuscular)
                 .NotEmpty()
                 .WithMessage("Campo obrigatório");
+
+            RuleFor(e => e.GrupoMuscular)
+            .Must(value => UteisEnums.EhValido<ExercicioGrupoMuscularEnum>((int)value))
+            .WithMessage("Valor inválido para GrupoMuscular");
         }
     }
 }

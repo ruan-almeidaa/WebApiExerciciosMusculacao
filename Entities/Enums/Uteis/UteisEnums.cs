@@ -21,5 +21,11 @@ namespace Entities.Enums.Uteis
             // Retorna a descrição se o atributo existir, caso contrário, o nome do enum
             return atributo?.Name ?? @enum.ToString();
         }
+
+        public static bool EhValido<TEnum>(int value) where TEnum : Enum
+        {
+            // Verifica se o valor é definido no enum
+            return Enum.IsDefined(typeof(TEnum), value);
+        }
     }
 }
