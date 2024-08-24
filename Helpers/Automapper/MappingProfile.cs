@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Domain.Dtos;
 using Entities.Entities;
 using Entities.Enums.Uteis;
 using Entities.Enums.Exercicio;
