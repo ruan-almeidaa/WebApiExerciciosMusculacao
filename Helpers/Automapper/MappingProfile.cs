@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.Entities;
 using Entities.Enums.Uteis;
+using Entities.Dtos;
 using Entities.Enums.Exercicio;
 using System;
 using System.Collections.Generic;

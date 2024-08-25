@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Dtos;
+using Entities.Dtos;
 using Domain.Interfaces.IRepositories;
 using Domain.Interfaces.IServices;
 using Entities.Entities;

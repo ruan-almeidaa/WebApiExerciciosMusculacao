@@ -1,4 +1,4 @@
-﻿using Domain.Dtos;
+﻿using Entities.Dtos;
 using Entities.Entities;
 using System;
 using System.Collections.Generic;

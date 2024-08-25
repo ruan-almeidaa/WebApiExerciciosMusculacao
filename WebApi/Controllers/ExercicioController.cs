@@ -1,4 +1,4 @@
-﻿using Domain.Dtos;
+﻿using Entities.Dtos;
 using Domain.Interfaces.IServices;
 using Entities.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
