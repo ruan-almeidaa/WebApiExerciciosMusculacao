@@ -37,6 +37,8 @@ builder.Services.AddDbContext<BancoContext>(options =>
 //Injeção de dependência
 builder.Services.AddScoped<IExercicioRepository, ExercicioRepository>();
 builder.Services.AddScoped<IExercicioService, ExercicioService>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<IloginService, LoginService>();
 
 var app = builder.Build();
 

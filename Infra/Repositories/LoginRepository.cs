@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces.IRepositories;
+using Entities.Dtos;
 using Entities.Entities;
 using Infra.Database;
 using Microsoft.EntityFrameworkCore;
@@ -10,20 +11,22 @@ using System.Threading.Tasks;
 
 namespace Infra.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class LoginRepository : ILoginRepository
     {
         private readonly BancoContext _bancoContext;
-        public UsuarioRepository(BancoContext bancoContext)
+
+        public LoginRepository(BancoContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
-        public async Task<Usuario> Autenticar(Usuario usuario)
+        public async Task<Login> Autenticar(LoginDTO login)
         {
             try
             {
-
-                return await _bancoContext.Usuarios.FirstOrDefaultAsync
-                    (u => u.Email == usuario.Email && u.Senha == usuario.Senha);
+                return await _bancoContext.Logins
+                    .Where(l => l.Email == login.Email && l.Senha == login.Senha)
+                    .Include(l => l.Usuario)
+                    .FirstOrDefaultAsync();
 
             }
             catch (Exception)

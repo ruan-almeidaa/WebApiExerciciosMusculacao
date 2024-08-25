@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.Dtos;
 
-namespace Domain.Interfaces.IRepositories
+namespace Domain.Interfaces.IServices
 {
-    public interface IUsuarioRepository
+    public interface IloginService
     {
-        Task<Usuario> Autenticar(Usuario usuario);
+        Task<Usuario> Autenticar(LoginDTO login);
     }
 }

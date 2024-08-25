@@ -19,11 +19,11 @@ namespace WebApi.Controllers
             
         }
 
-        [HttpGet("buscarTodos")]
+        [HttpGet]
         public async Task<ActionResult<List<ExercicioDTO>>> BuscarTodos()
         {
             try
-            {;
+            {
                 return Ok(await _exercicioService.BuscarTodos());
             }
             catch (Exception ex)

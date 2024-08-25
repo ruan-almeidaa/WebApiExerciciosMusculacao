@@ -14,6 +14,7 @@ namespace Infra.Database
         {
         }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Login> Logins { get; set; }
         public DbSet<Exercicio> Exercicios { get; set; }
         public DbSet<VariacaoExercicio> VariacoesExercicios { get; set; }
     }

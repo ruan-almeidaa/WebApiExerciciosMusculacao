@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20240818215925_Inicial")]
-    partial class Inicial
+    [Migration("20240825173601_tabelasExerciciosVariacoesUsuarios")]
+    partial class tabelasExerciciosVariacoesUsuarios
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace Infra.Migrations
                     b.ToTable("Exercicios");
                 });
 
-            modelBuilder.Entity("Entities.Entities.Usuario", b =>
+            modelBuilder.Entity("Entities.Entities.Login", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,9 +56,34 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Logins");
+                });
+
+            modelBuilder.Entity("Entities.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PerfilUsuario")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
@@ -89,6 +114,17 @@ namespace Infra.Migrations
                     b.HasIndex("ExercicioId");
 
                     b.ToTable("VariacoesExercicios");
+                });
+
+            modelBuilder.Entity("Entities.Entities.Login", b =>
+                {
+                    b.HasOne("Entities.Entities.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Entities.Entities.VariacaoExercicio", b =>
