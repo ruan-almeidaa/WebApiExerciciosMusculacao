@@ -13,5 +13,6 @@ namespace Domain.Interfaces.IRepositories
         Task<Exercicio> Criar(Exercicio exercicio);
         Task<Exercicio> Editar(Exercicio exercicio);
         Task Excluir (Exercicio exercicio);
+        Task<Exercicio> BuscarPorId(int id);
     }
 }

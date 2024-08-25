@@ -19,6 +19,21 @@ namespace Infra.Repositories
             _bancoContext = bancoContext;
         }
 
+        public async Task<Exercicio> BuscarPorId(int id)
+        {
+            try
+            {
+                return await _bancoContext.Exercicios
+                    .Where(e => e.Id == id)
+                    .FirstAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<List<Exercicio>> BuscarTodos()
         {
             try

@@ -20,6 +20,20 @@ namespace Domain.Services
             _exercicioRepository = exercicioRepository;
             _mapper = mapper;
         }
+
+        public async Task<Exercicio> BuscarPorId(int id)
+        {
+            try
+            {
+                return await _exercicioRepository.BuscarPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<List<ExercicioDTO>> BuscarTodos()
         {
             try

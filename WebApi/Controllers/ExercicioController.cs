@@ -36,6 +36,23 @@ namespace WebApi.Controllers
            
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ExercicioDTO>> BuscarPorId(int id)
+        {
+            try
+            {
+                Exercicio exercicioEncontrado = await _exercicioService.BuscarPorId(id);
+
+                if (exercicioEncontrado==null) return NotFound($"Exercício com o ID {id} não foi encontrado.");
+                return Ok(exercicioEncontrado);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
+            }
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<ExercicioDTO>> Criar(Exercicio exercicio)
         {
