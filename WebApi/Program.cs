@@ -39,6 +39,9 @@ builder.Services.AddScoped<IExercicioRepository, ExercicioRepository>();
 builder.Services.AddScoped<IExercicioService, ExercicioService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IVariacaoRepository, VariacaoRepository>();
+builder.Services.AddScoped<IVariacaoService, VariacaoService>();
+builder.Services.AddScoped<IOrquestracaoService, OrquestracaoService>();
 
 var app = builder.Build();
 

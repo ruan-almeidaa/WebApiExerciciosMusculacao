@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace Entities.Dtos
         public required string Nome { get; set; }
         public required string GrupoMuscularDescricao { get; set; } 
         public required int GrupoMuscular { get; set; }
+        public List<VariacaoExercicio>? VariacaoExercicios { get; set; }
     }
 }

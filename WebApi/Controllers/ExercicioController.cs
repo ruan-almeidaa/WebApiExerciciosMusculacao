@@ -13,11 +13,12 @@ namespace WebApi.Controllers
     public class ExercicioController : ControllerBase
     {
         private readonly IExercicioService _exercicioService;
+        private readonly IOrquestracaoService _orquestracaoService;
 
-        public ExercicioController(IExercicioService exercicioService)
+        public ExercicioController(IExercicioService exercicioService, IOrquestracaoService orquestracaoService)
         {
             _exercicioService = exercicioService;
-            
+            _orquestracaoService = orquestracaoService;
         }
 
         [HttpGet]
@@ -41,7 +42,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                ExercicioDTO exercicioEncontrado = await _exercicioService.BuscarPorId(id);
+                ExercicioDTO exercicioEncontrado = await _orquestracaoService.BuscarExercicioPorId(id);
 
                 if (exercicioEncontrado==null) return NotFound($"Exercício com o ID {id} não foi encontrado.");
                 return Ok(exercicioEncontrado);
