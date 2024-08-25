@@ -8,7 +8,7 @@ using Entities.Dtos;
 
 namespace Domain.Interfaces.IServices
 {
-    public interface IloginService
+    public interface ILoginService
     {
         Task<Usuario> Autenticar(LoginDTO login);
     }

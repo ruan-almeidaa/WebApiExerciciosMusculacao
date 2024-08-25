@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    public class LoginService : IloginService
+    public class LoginService : ILoginService
     {
 		private readonly ILoginRepository _loginRepository;
 		public LoginService(ILoginRepository loginRepository)

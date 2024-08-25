@@ -11,8 +11,8 @@ namespace WebApi.Controllers
     [Produces("application/json")]
     public class LoginController : ControllerBase
     {
-        private readonly IloginService _loginService;
-        public LoginController(IloginService iloginService)
+        private readonly ILoginService _loginService;
+        public LoginController(ILoginService iloginService)
         {
             _loginService = iloginService;
         }

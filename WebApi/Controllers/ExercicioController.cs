@@ -3,6 +3,7 @@ using Domain.Interfaces.IServices;
 using Entities.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Controllers
 {
@@ -24,7 +25,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(await _exercicioService.BuscarTodos());
+                List<ExercicioDTO> exerciciosEncontrados = await _exercicioService.BuscarTodos();
+                if (exerciciosEncontrados.IsNullOrEmpty()) return NoContent();
+                return Ok(exerciciosEncontrados);
             }
             catch (Exception ex)
             {
