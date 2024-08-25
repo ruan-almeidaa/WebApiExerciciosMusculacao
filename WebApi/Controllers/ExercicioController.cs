@@ -41,7 +41,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                Exercicio exercicioEncontrado = await _exercicioService.BuscarPorId(id);
+                ExercicioDTO exercicioEncontrado = await _exercicioService.BuscarPorId(id);
 
                 if (exercicioEncontrado==null) return NotFound($"Exercício com o ID {id} não foi encontrado.");
                 return Ok(exercicioEncontrado);

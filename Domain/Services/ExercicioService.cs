@@ -21,11 +21,12 @@ namespace Domain.Services
             _mapper = mapper;
         }
 
-        public async Task<Exercicio> BuscarPorId(int id)
+        public async Task<ExercicioDTO> BuscarPorId(int id)
         {
             try
             {
-                return await _exercicioRepository.BuscarPorId(id);
+                Exercicio exercicio = await _exercicioRepository.BuscarPorId(id);
+                return _mapper.Map<ExercicioDTO>(exercicio);
             }
             catch (Exception)
             {
