@@ -11,5 +11,6 @@ namespace Domain.Interfaces.IServices
     public interface IOrquestracaoService
     {
         Task<ExercicioDTO> BuscarExercicioPorId(int id);
+        Task<List<ExercicioDTO>> BuscarTodosExercicios();
     }
 }

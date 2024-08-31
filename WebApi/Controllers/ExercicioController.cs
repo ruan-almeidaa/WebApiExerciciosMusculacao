@@ -26,7 +26,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                List<ExercicioDTO> exerciciosEncontrados = await _exercicioService.BuscarTodos();
+                List<ExercicioDTO> exerciciosEncontrados = await _orquestracaoService.BuscarTodosExercicios();
                 if (exerciciosEncontrados.IsNullOrEmpty()) return NoContent();
                 return Ok(exerciciosEncontrados);
             }

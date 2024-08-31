@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.IServices;
+﻿using Domain.Interfaces.IRepositories;
+using Domain.Interfaces.IServices;
 using Entities.Dtos;
 using Entities.Entities;
 using System;
@@ -26,6 +27,25 @@ namespace Domain.Services
                 ExercicioDTO exercicio = await _exercicioService.BuscarPorId(id);
                 exercicio.VariacaoExercicios = await _variacaoService.BuscarVariacoesExercicio(exercicio);
                 return exercicio;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<List<ExercicioDTO>> BuscarTodosExercicios()
+        {
+            try
+            {
+                List<ExercicioDTO> exerciciosDto = await _exercicioService.BuscarTodos();
+                foreach (ExercicioDTO exercicio in exerciciosDto)
+                {
+                    exercicio.VariacaoExercicios = await _variacaoService.BuscarVariacoesExercicio(exercicio);
+                }
+                return exerciciosDto;
+
             }
             catch (Exception)
             {
