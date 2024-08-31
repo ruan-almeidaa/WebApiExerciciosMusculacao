@@ -73,7 +73,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(await _exercicioService.Editar(exercicio));
+                return Ok(await _orquestracaoService.EditarExercicio(exercicio));
             }
             catch (Exception ex)
             {

@@ -12,5 +12,6 @@ namespace Domain.Interfaces.IServices
     {
         Task<ExercicioDTO> BuscarExercicioPorId(int id);
         Task<List<ExercicioDTO>> BuscarTodosExercicios();
+        Task<ExercicioDTO> EditarExercicio(Exercicio exercicio);
     }
 }

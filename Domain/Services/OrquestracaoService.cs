@@ -53,5 +53,20 @@ namespace Domain.Services
                 throw;
             }
         }
+
+        public async Task<ExercicioDTO> EditarExercicio(Exercicio exercicio)
+        {
+            try
+            {
+                ExercicioDTO exercicioEditado = await _exercicioService.Editar(exercicio);
+                exercicioEditado.VariacaoExercicios = await _variacaoService.BuscarVariacoesExercicio(exercicioEditado);
+                return exercicioEditado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
