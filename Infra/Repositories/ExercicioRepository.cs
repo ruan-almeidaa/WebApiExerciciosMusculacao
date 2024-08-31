@@ -25,6 +25,7 @@ namespace Infra.Repositories
             {
                 return await _bancoContext.Exercicios
                     .Where(e => e.Id == id)
+                    .AsNoTracking()
                     .FirstAsync();
             }
             catch (Exception)
