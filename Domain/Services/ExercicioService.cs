@@ -95,5 +95,18 @@ namespace Domain.Services
                 throw;
             }
         }
+
+        public Task<bool> VerificarSeExiste(int id)
+        {
+            try
+            {
+                return _exercicioRepository.VerificarSeExiste(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

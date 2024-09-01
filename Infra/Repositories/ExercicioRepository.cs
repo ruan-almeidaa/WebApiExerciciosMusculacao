@@ -97,5 +97,19 @@ namespace Infra.Repositories
             }
         }
 
+        public async Task<bool> VerificarSeExiste(int id)
+        {
+            try
+            {
+                return await _bancoContext.Exercicios
+                        .AnyAsync(e => e.Id == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }

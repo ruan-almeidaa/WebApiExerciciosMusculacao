@@ -35,7 +35,6 @@ namespace Domain.Services
         {
 			try
 			{
-				variacaoExercicio.Exercicio = null;
                 return await _variacaoRepository.Criar(variacaoExercicio);
 			}
 			catch (Exception)

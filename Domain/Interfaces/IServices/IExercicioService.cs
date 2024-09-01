@@ -15,5 +15,6 @@ namespace Domain.Interfaces.IServices
         Task<ExercicioDTO> Editar(Exercicio exercicio);
         Task Excluir(Exercicio exercicio);
         Task<ExercicioDTO> BuscarPorId(int id);
+        Task<bool> VerificarSeExiste(int id);
     }
 }
