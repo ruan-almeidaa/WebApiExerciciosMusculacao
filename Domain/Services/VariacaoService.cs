@@ -30,5 +30,19 @@ namespace Domain.Services
 				throw;
 			}
         }
+
+        public async Task<VariacaoExercicio> Criar(VariacaoExercicio variacaoExercicio)
+        {
+			try
+			{
+				variacaoExercicio.Exercicio = null;
+                return await _variacaoRepository.Criar(variacaoExercicio);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
     }
 }

@@ -19,6 +19,9 @@ namespace Helpers.Automapper
             CreateMap<Exercicio, ExercicioDTO>()
                 .ForMember(dest => dest.GrupoMuscularDescricao, opt => opt.MapFrom(src => UteisEnums.BuscaDescricao(src.GrupoMuscular)))
                 .ForMember(dest => dest.GrupoMuscular, opt => opt.MapFrom(src => (int)src.GrupoMuscular));
+
+            CreateMap<ExercicioDTO, Exercicio>();
+            CreateMap<VariacaoExercicioDTO, VariacaoExercicio>();
         }
     }
 }

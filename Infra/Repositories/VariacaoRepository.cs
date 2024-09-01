@@ -32,5 +32,20 @@ namespace Infra.Repositories
                 throw;
             }
         }
+
+        public async Task<VariacaoExercicio> Criar(VariacaoExercicio variacaoExercicio)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                await _bancoContext.VariacoesExercicios.AddAsync(variacaoExercicio);
+                await _bancoContext.SaveChangesAsync();
+                return variacaoExercicio;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

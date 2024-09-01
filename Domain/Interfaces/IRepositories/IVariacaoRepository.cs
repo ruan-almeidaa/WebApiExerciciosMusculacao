@@ -11,5 +11,6 @@ namespace Domain.Interfaces.IRepositories
     public interface IVariacaoRepository
     {
         Task<List<VariacaoExercicio>> BuscarVariacoesExercicio(ExercicioDTO exercicio);
+        Task<VariacaoExercicio> Criar(VariacaoExercicio variacaoExercicio);
     }
 }

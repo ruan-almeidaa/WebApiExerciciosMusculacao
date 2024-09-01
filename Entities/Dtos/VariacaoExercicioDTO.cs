@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Entities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Entities
+namespace Entities.Dtos
 {
-    public class VariacaoExercicio
+    public class VariacaoExercicioDTO
     {
         public int Id { get; set; }
-        public required int ExercicioId { get; set; }
         public required string Nome { get; set; }
-        public required Exercicio Exercicio { get; set; }
+        public required int ExercicioId { get; set; }
     }
 }
