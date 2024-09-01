@@ -2,7 +2,7 @@
 using Domain.Interfaces.IServices;
 using Entities.Dtos;
 using Entities.Entities;
-using Helpers.Criptografia;
+using Shared.Criptografia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
