@@ -48,5 +48,19 @@ namespace Domain.Services
 				throw;
 			}
         }
+
+        public async Task<VariacaoExercicio> Editar(VariacaoExercicioDTO variacaoExercicioDTO)
+        {
+            try
+            {
+                VariacaoExercicio variacaoExercicio = _mapper.Map<VariacaoExercicio>(variacaoExercicioDTO);
+                return await _variacaoRepository.Editar(variacaoExercicio);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

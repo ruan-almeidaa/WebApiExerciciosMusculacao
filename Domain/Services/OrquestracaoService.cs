@@ -87,5 +87,20 @@ namespace Domain.Services
                 throw;
             }
         }
+
+        public async Task<VariacaoExercicio> EditarVariacaoExercicio(VariacaoExercicioDTO variacaoExercicioDTO)
+        {
+            try
+            {
+                bool existeExercicio = await _exercicioService.VerificarSeExiste(variacaoExercicioDTO.ExercicioId);
+                if (!existeExercicio) throw new InvalidOperationException("Não foi encontrado um exercício com o id informado.");
+                return await _variacaoService.Editar(variacaoExercicioDTO);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -33,5 +33,20 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
             }
         }
+
+        [HttpPut]
+        public async Task<ActionResult<VariacaoExercicio>> Editar(VariacaoExercicioDTO variacaoExercicioDTO)
+        {
+            try
+            {
+                return Ok(await _orquestracaoService.EditarVariacaoExercicio(variacaoExercicioDTO));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
