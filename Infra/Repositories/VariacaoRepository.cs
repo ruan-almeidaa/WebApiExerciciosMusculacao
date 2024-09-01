@@ -70,5 +70,19 @@ namespace Infra.Repositories
                 throw;
             }
         }
+
+        public async Task Excluir(VariacaoExercicio variacaoExercicio)
+        {
+            try
+            {
+                _bancoContext.Remove(variacaoExercicio);
+                await _bancoContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

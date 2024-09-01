@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces.IServices;
+using Domain.Services;
 using Entities.Dtos;
 using Entities.Entities;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +46,21 @@ namespace WebApi.Controllers
             {
 
                 throw;
+            }
+        }
+
+        [HttpDelete]
+        public async Task<object> Excluir(VariacaoExercicioDTO variacaoExercicioDTO)
+        {
+            try
+            {
+                await _variacaoService.Excluir(variacaoExercicioDTO);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
             }
         }
 

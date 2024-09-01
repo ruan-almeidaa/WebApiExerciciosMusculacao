@@ -13,5 +13,6 @@ namespace Domain.Interfaces.IServices
         Task<List<VariacaoExercicio>> BuscarVariacoesExercicio(ExercicioDTO exercicio);
         Task<VariacaoExercicio> Criar(VariacaoExercicioDTO variacaoExercicioDto);
         Task<VariacaoExercicio> Editar(VariacaoExercicioDTO variacaoExercicioDTO);
+        Task Excluir(VariacaoExercicioDTO variacaoExercicioDTO);
     }
 }

@@ -62,5 +62,19 @@ namespace Domain.Services
                 throw;
             }
         }
+
+        public async Task Excluir(VariacaoExercicioDTO variacaoExercicioDTO)
+        {
+            try
+            {
+                VariacaoExercicio variacaoExercicio = _mapper.Map<VariacaoExercicio>(variacaoExercicioDTO);
+                await _variacaoRepository.Excluir(variacaoExercicio);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
