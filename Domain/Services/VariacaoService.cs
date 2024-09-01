@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.IRepositories;
+﻿using AutoMapper;
+using Domain.Interfaces.IRepositories;
 using Domain.Interfaces.IServices;
 using Entities.Dtos;
 using Entities.Entities;
@@ -13,9 +14,11 @@ namespace Domain.Services
     public class VariacaoService : IVariacaoService
     {
 		private readonly IVariacaoRepository _variacaoRepository;
-		public VariacaoService(IVariacaoRepository variacaoRepository)
+        private readonly IMapper _mapper;
+        public VariacaoService(IVariacaoRepository variacaoRepository, IMapper mapper)
         {
             _variacaoRepository = variacaoRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<VariacaoExercicio>> BuscarVariacoesExercicio(ExercicioDTO exercicio)
@@ -31,10 +34,12 @@ namespace Domain.Services
 			}
         }
 
-        public async Task<VariacaoExercicio> Criar(VariacaoExercicio variacaoExercicio)
+        public async Task<VariacaoExercicio> Criar(VariacaoExercicioDTO variacaoExercicioDto)
         {
 			try
 			{
+                //Converte o DTO que foi recebido, na entidade
+                VariacaoExercicio variacaoExercicio = _mapper.Map<VariacaoExercicio>(variacaoExercicioDto);
                 return await _variacaoRepository.Criar(variacaoExercicio);
 			}
 			catch (Exception)

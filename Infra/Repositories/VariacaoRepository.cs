@@ -40,10 +40,33 @@ namespace Infra.Repositories
                 _bancoContext.ChangeTracker.Clear();
                 await _bancoContext.VariacoesExercicios.AddAsync(variacaoExercicio);
                 await _bancoContext.SaveChangesAsync();
-                return variacaoExercicio;
+                return _bancoContext.VariacoesExercicios
+                    .Include(v => v.Exercicio)
+                    .AsNoTracking()
+                    .FirstOrDefault(v => v.Id == variacaoExercicio.Id);
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public async Task<VariacaoExercicio> Editar(VariacaoExercicio variacaoExercicio)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.VariacoesExercicios.Update(variacaoExercicio);
+                await _bancoContext.SaveChangesAsync();
+                return _bancoContext.VariacoesExercicios
+                    .Include(v => v.Exercicio)
+                    .AsNoTracking()
+                    .FirstOrDefault(v => v.Id == variacaoExercicio.Id);
+         
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

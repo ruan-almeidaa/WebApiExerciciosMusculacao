@@ -63,16 +63,8 @@ namespace Domain.Services
             try
             {
                 bool existeExercicio = await _exercicioService.VerificarSeExiste(variacaoExercicioDTO.ExercicioId);
-                if(!existeExercicio) throw new InvalidOperationException("Exercício com o Id informado não foi encontrado.");
-                //Converte o DTO que foi recebido, na entidade
-                VariacaoExercicio variacaoExercicio = _mapper.Map<VariacaoExercicio>(variacaoExercicioDTO);
-                //Cria o registro
-                await _variacaoService.Criar(variacaoExercicio);
-
-                //Antes de retornar o exercicio que a varaiação pertence, é necessário buscar o DTO e convertê lo para entidade
-                ExercicioDTO exercicioDTO = await _exercicioService.BuscarPorId(variacaoExercicioDTO.ExercicioId);
-                variacaoExercicio.Exercicio = _mapper.Map<Exercicio>(exercicioDTO);
-                return variacaoExercicio;
+                if(!existeExercicio) throw new InvalidOperationException("Não foi encontrado um exercício com o id informado.");
+                return await _variacaoService.Criar(variacaoExercicioDTO);
             }
             catch (Exception)
             {
