@@ -10,6 +10,7 @@ namespace Domain.Interfaces.IServices
 {
     public interface ILoginService
     {
-        Task<Usuario> Autenticar(LoginDTO login);
+        Task<string> Autenticar(LoginDTO login);
+        //Task<string> GerarToken(Usuario usuario);
     }
 }

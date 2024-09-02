@@ -2,6 +2,7 @@
 using Domain.Services;
 using Entities.Dtos;
 using Entities.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,7 @@ namespace WebApi.Controllers
             _orquestracaoService = orquestracaoService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<VariacaoExercicio>> Criar(VariacaoExercicioDTO variacaoExercicioDTO)
         {
@@ -35,6 +37,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<ActionResult<VariacaoExercicio>> Editar(VariacaoExercicioDTO variacaoExercicioDTO)
         {
@@ -48,7 +51,7 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-
+        [Authorize]
         [HttpDelete]
         public async Task<object> Excluir(VariacaoExercicioDTO variacaoExercicioDTO)
         {

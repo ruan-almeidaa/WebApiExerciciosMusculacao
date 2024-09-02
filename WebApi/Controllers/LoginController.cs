@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> Autenticar(LoginDTO login)
+        public async Task<ActionResult<String>> Autenticar(LoginDTO login)
         {
             try
             {

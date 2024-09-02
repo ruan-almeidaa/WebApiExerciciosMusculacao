@@ -4,6 +4,7 @@ using Entities.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -27,7 +28,7 @@ namespace WebApi.Controllers
             try
             {
                 List<ExercicioDTO> exerciciosEncontrados = await _orquestracaoService.BuscarTodosExercicios();
-                if (exerciciosEncontrados.IsNullOrEmpty()) return NoContent();
+                if (!exerciciosEncontrados.Any()) return NoContent();
                 return Ok(exerciciosEncontrados);
             }
             catch (Exception ex)
@@ -53,7 +54,7 @@ namespace WebApi.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ExercicioDTO>> Criar(Exercicio exercicio)
         {
@@ -68,6 +69,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<ActionResult<ExercicioDTO>> Editar(Exercicio exercicio)
         {
@@ -82,6 +84,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete]
         public async Task<object> Excluir(Exercicio exercicio)
         {
